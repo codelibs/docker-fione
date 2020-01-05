@@ -1,0 +1,97 @@
+version: "3"
+services:
+  fess01:
+    image: codelibs/fione:snapshot
+    container_name: fess01
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - es01
+      - h2o01
+    environment:
+      - RUN_ELASTICSEARCH=false
+      - "ES_HTTP_URL=http://es01:9200"
+      - "FESS_DICTIONARY_PATH=/usr/share/elasticsearch/config/dictionary/"
+      - "FESS_JAVA_OPTS=-Dfess.system.storage.accesskey=AKIAIOSFODNN7EXAMPLE -Dfess.system.storage.secretkey=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY -Dfess.system.storage.endpoint=http://minio01:9000 -Dfess.system.storage.bucket=fess -Dfess.system.h2o.endpoint=http://h2o01:54321"
+    networks:
+      - fione-net
+    volumes:
+      - ./data/fess01/opt/fess:/opt/fess
+#      - ./data/fess01/var/lib/fess:/var/lib/fess
+      - fess-data:/var/lib/fess
+#      - ./data/fess01/var/log/fess:/var/log/fess
+
+  es01:
+    image: codelibs/fess-elasticsearch:7.5.1
+    container_name: es01
+    restart: always
+    ports:
+      - 9200:9200
+    environment:
+      - node.name=es01
+      - discovery.seed_hosts=es01
+      - cluster.initial_master_nodes=es01
+      - cluster.name=fess-es
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xmx1g"
+      - "FESS_DICTIONARY_PATH=/usr/share/elasticsearch/config/dictionary"
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+      memlock:
+        soft: -1
+        hard: -1
+    networks:
+      - fione-net
+    volumes:
+#      - ./data/es01/usr/share/elasticsearch/data:/usr/share/elasticsearch/data
+      - es-data:/usr/share/elasticsearch/data
+#      - ./data/es01/usr/share/elasticsearch/config/dictionary:/usr/share/elasticsearch/config/dictionary
+      - es-dict:/usr/share/elasticsearch/config/dictionary
+
+  minio01:
+    image: minio/minio
+    container_name: minio01
+    ports:
+      - "9000:9000"
+    environment:
+      - "MINIO_ACCESS_KEY=AKIAIOSFODNN7EXAMPLE"
+      - "MINIO_SECRET_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+    volumes:
+#      - ./data/minio01/data:/data
+      - minio-data:/data
+    networks:
+      - fione-net
+    command: server /data
+
+  h2o01:
+    image: codelibs/h2o:3.28.0.1
+    container_name: h2o01
+    ports:
+      - "54321:54321"
+    environment:
+      - "H2O_JVM_OPTIONS=-Dsys.ai.h2o.persist.s3.endPoint=http://minio01:9000 -Dsys.ai.h2o.persist.s3.enable.path.style=true -Dsys.ai.h2o.persist.s3.region=us-east-1"
+      - "H2O_OPTIONS=-log_level DEBUG -hdfs_config /data/core-site.xml"
+      - "H2O_MAX_HEAP=1g"
+      - "AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE"
+      - "AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+    networks:
+      - fione-net
+    volumes:
+      - ./data/h2o01/data:/data
+
+volumes:
+  fess-data:
+    driver: local
+  es-data:
+    driver: local
+  es-dict:
+    driver: local
+  minio-data:
+    driver: local
+
+networks:
+  fione-net:
+    driver: bridge
