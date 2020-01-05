@@ -9,7 +9,7 @@ See [https://hub.docker.com/r/codelibs/fione/](https://hub.docker.com/r/codelibs
 
 ## What is Fess ?
 
-TODO
+Fione is Machine Learning platform based on [Fess](https://fess.codelibs.org/).
 
 ## Getting Started
 
@@ -18,7 +18,8 @@ TODO
 You can access http://localhost:8080 from the host OS with:
 
 ```console
-$ docker run -d -p 8080:8080 --name fione codelibs/fione:latest
+$ cd compose
+$ docker-compose up
 ```
 
 ## Build
