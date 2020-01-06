@@ -7,7 +7,7 @@ See [https://hub.docker.com/r/codelibs/fione/](https://hub.docker.com/r/codelibs
 
 -   [`snapshot` (*snapshot/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/snapshot/Dockerfile)
 
-## What is Fess ?
+## What is Fione ?
 
 Fione is Machine Learning platform based on [Fess](https://fess.codelibs.org/).
 
