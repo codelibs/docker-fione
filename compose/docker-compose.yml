@@ -23,7 +23,7 @@ services:
 #      - ./data/fess01/var/log/fess:/var/log/fess
 
   es01:
-    image: codelibs/fess-elasticsearch:7.5.1
+    image: codelibs/fess-elasticsearch:7.5.2
     container_name: es01
     restart: always
     ports:
@@ -67,13 +67,13 @@ services:
     command: server /data
 
   h2o01:
-    image: codelibs/h2o:3.28.0.1
+    image: codelibs/h2o:3.28.0.2
     container_name: h2o01
     ports:
       - "54321:54321"
     environment:
       - "H2O_JVM_OPTIONS=-Dsys.ai.h2o.persist.s3.endPoint=http://minio01:9000 -Dsys.ai.h2o.persist.s3.enable.path.style=true -Dsys.ai.h2o.persist.s3.region=us-east-1 -Dsys.ai.h2o.automl.algo_parameters.all.enabled=true -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/data -XX:ErrorFile=/data/hs_err_pid%p.log"
-      - "H2O_OPTIONS=-log_level DEBUG -hdfs_config /data/core-site.xml"
+      - "H2O_OPTIONS=-log_level INFO -hdfs_config /data/core-site.xml"
 #      - "H2O_MAX_HEAP=2g"
       - "AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE"
       - "AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
