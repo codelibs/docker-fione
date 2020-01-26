@@ -35,7 +35,8 @@ $ docker-compose up
 1. Select `Max Execution Time`.
 1. Click `Run` button.
 
-For the result, you can check `Fione Report` in `Prediction Summary` page.
+You can check the result in `Prediction Summary` page.
+For Machine Learning experts, you can also use H2O Flow in `http://localhost:54321/flow/`.
 
 ## Development
 
