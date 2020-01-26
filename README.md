@@ -13,9 +13,14 @@ Fione is Machine Learning platform based on [Fess](https://fess.codelibs.org/).
 
 ## Getting Started
 
+### Prerequisite
+
+- [Docker](https://www.docker.com/get-started)
+- [Docker Compose](https://docs.docker.com/compose/)
+
 ### Start Fione
 
-You can access http://localhost:8080 from the host OS with:
+First of all, start Fione with the following command:
 
 ```console
 $ git clone https://github.com/codelibs/docker-fione.git
