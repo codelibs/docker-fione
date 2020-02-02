@@ -43,6 +43,23 @@ $ docker-compose up
 You can check the result in `Prediction Summary` page.
 For Machine Learning experts, you can also use H2O Flow in `http://localhost:54321/flow/`.
 
+### Start Serving API with Docker
+
+Fione provides Serving API container with Docker.
+To download Dockerfile for Serving API, you can find it at Serving page for each Model page.
+
+### Stop Fione and Clean Up
+
+```console
+$ docker-compose down
+```
+
+Some data remains in docker volumes. To delete them, run the following command:
+
+```console
+$ docker volume rm fess-data es-data es-dict minio-data
+```
+
 ## Development
 
 ### Build Fione
