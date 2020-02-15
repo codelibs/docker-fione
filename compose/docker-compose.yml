@@ -23,7 +23,7 @@ services:
 #      - ./data/fess01/var/log/fess:/var/log/fess
 
   es01:
-    image: codelibs/fess-elasticsearch:7.5.2
+    image: codelibs/fess-elasticsearch:7.6.0
     container_name: es01
     restart: always
     ports:
