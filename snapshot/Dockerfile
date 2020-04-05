@@ -1,4 +1,4 @@
-FROM codelibs/fess:13.6.2
+FROM codelibs/fess:13.6.3
 
 ARG FIONE_VERSION=13.6.2-SNAPSHOT
 
