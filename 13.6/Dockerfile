@@ -1,6 +1,6 @@
-FROM codelibs/fess:13.6.2
+FROM codelibs/fess:13.6.3
 
-ARG FIONE_VERSION=13.6.1
+ARG FIONE_VERSION=13.6.2
 
 ARG CACHEBUST=1
 RUN set -x && \

@@ -6,7 +6,7 @@ See [https://hub.docker.com/r/codelibs/fione/](https://hub.docker.com/r/codelibs
 ## Docker Images
 
 -   [`snapshot` (*snapshot/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/snapshot/Dockerfile)
--   [`13.6.1`, `13.6`, `13` (*snapshot/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/13.6/Dockerfile)
+-   [`13.6.2`, `13.6`, `13` (*snapshot/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/13.6/Dockerfile)
 
 ## What is Fione ?
 
