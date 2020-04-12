@@ -1,16 +1,16 @@
 Docker for Fione
 =====
 
-See [https://hub.docker.com/r/codelibs/fione/](https://hub.docker.com/r/codelibs/fione/).
+## What is Fione?
+
+[Fione](https://fione.codelibs.org/) is Machine Learning platform based on [Fess](https://fess.codelibs.org/).
 
 ## Docker Images
 
+See [https://hub.docker.com/r/codelibs/fione/](https://hub.docker.com/r/codelibs/fione/).
+
 -   [`snapshot` (*snapshot/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/snapshot/Dockerfile)
--   [`13.6.2`, `13.6`, `13` (*snapshot/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/13.6/Dockerfile)
-
-## What is Fione ?
-
-Fione is Machine Learning platform based on [Fess](https://fess.codelibs.org/).
+-   [`13.6.2`, `13.6`, `13` (*13.6/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/13.6/Dockerfile)
 
 ## Getting Started
 
@@ -24,7 +24,7 @@ Fione is Machine Learning platform based on [Fess](https://fess.codelibs.org/).
 First of all, start Fione with the following command:
 
 ```console
-$ git clone https://github.com/codelibs/docker-fione.git
+$ git clone https://github.com/codelibs/docker-fione.git -b v13.6.2
 $ cd docker-fione/compose
 $ docker-compose up
 ```
