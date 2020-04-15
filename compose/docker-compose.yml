@@ -1,7 +1,7 @@
 version: "3"
 services:
   fess01:
-    image: codelibs/fione:13.6.2
+    image: codelibs/fione:snapshot
     container_name: fess01
     restart: always
     ports:
