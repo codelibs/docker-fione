@@ -1,6 +1,6 @@
 FROM codelibs/python:3.7.7-bionic as python
 
-FROM codelibs/fess:13.6.3
+FROM codelibs/fess:snapshot
 
 ENV LANG en_US.UTF-8
 ENV PATH /usr/local/bin:$PATH
