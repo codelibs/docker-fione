@@ -10,9 +10,11 @@ Docker for Fione
 See [https://hub.docker.com/r/codelibs/fione/](https://hub.docker.com/r/codelibs/fione/).
 
 -   [`snapshot` (*snapshot/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/snapshot/Dockerfile)
--   [`13.6.2`, `13.6`, `13` (*13.6/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/13.6/Dockerfile)
+-   [`13.6.3`, `13.6`, `13` (*13.6/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/13.6/Dockerfile)
 
 ## Getting Started
+
+For more details, see [Quick Start](https://fione.codelibs.org/docs/getting-started/quickstart).
 
 ### Prerequisite
 
@@ -24,7 +26,7 @@ See [https://hub.docker.com/r/codelibs/fione/](https://hub.docker.com/r/codelibs
 First of all, start Fione with the following command:
 
 ```console
-$ git clone https://github.com/codelibs/docker-fione.git -b v13.6.2
+$ git clone https://github.com/codelibs/docker-fione.git -b v13.6.3
 $ cd docker-fione/compose
 $ docker-compose up
 ```
@@ -58,7 +60,7 @@ $ docker-compose down
 Some data remains in docker volumes. To delete them, run the following command:
 
 ```console
-$ docker volume rm fess-data es-data es-dict minio-data
+$ docker volume rm compose_es-data compose_es-dict compose_fess-data compose_minio-data
 ```
 
 ## Development
