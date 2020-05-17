@@ -3,7 +3,9 @@ Docker for Fione
 
 ## What is Fione?
 
-[Fione](https://fione.codelibs.org/) is Machine Learning platform based on [Fess](https://fess.codelibs.org/).
+[Fione](https://fione.codelibs.org/)  is very powerful and easily deployable Enterprise AI Platform.
+You can install and run Fione quickly on any platforms, which have Docker runtime environment.
+Fione is provided under Apache license.
 
 ## Docker Images
 
@@ -14,7 +16,7 @@ See [https://hub.docker.com/r/codelibs/fione/](https://hub.docker.com/r/codelibs
 
 ## Getting Started
 
-For more details, see [Quick Start](https://fione.codelibs.org/docs/getting-started/quickstart).
+(For more details, see [Quick Start](https://fione.codelibs.org/docs/getting-started/quickstart))
 
 ### Prerequisite
 
