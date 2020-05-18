@@ -1,13 +1,13 @@
 FROM codelibs/python:3.7.7-bionic as python
 
-FROM codelibs/fess:13.6.4
+FROM codelibs/fess:snapshot
 
 ENV LANG en_US.UTF-8
 ENV PATH /usr/local/bin:$PATH
 ENV LD_LIBRARY_PATH /usr/local/lib:$LD_LIBRARY_PATH
 ENV DEBIAN_FRONTEND noninteractive
 
-ARG FIONE_VERSION=13.6.3-SNAPSHOT
+ARG FIONE_VERSION=13.7.0-SNAPSHOT
 
 COPY --from=python /usr/local /usr/local
 
