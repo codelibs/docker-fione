@@ -1,7 +1,7 @@
 version: "3"
 services:
   fess01:
-    image: codelibs/fione:13.6.3
+    image: codelibs/fione:snapshot
     container_name: fess01
     restart: always
     ports:
@@ -23,7 +23,7 @@ services:
 #      - ./data/fess01/var/log/fess:/var/log/fess
 
   es01:
-    image: codelibs/fess-elasticsearch:7.6.2
+    image: codelibs/fess-elasticsearch:7.7.0
     container_name: es01
     restart: always
     ports:
@@ -68,7 +68,7 @@ services:
     command: server /data
 
   h2o01:
-    image: codelibs/h2o:3.30.0.2
+    image: codelibs/h2o:3.30.0.3
     container_name: h2o01
     restart: always
     ports:

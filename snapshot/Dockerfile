@@ -20,7 +20,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN pip install Cython requests tabulate colorama future grip \
     numpy scipy pandas gensim Pillow nltk beautifulsoup4 ipython \
     jupyter scikit-learn \
-    http://h2o-release.s3.amazonaws.com/h2o/rel-zahradnik/2/Python/h2o-3.30.0.2-py2.py3-none-any.whl
+    http://h2o-release.s3.amazonaws.com/h2o/rel-zahradnik/3/Python/h2o-3.30.0.3-py2.py3-none-any.whl
 
 ARG CACHEBUST=1
 RUN set -x && \
