@@ -12,7 +12,8 @@ Fione is provided under Apache license.
 See [https://hub.docker.com/r/codelibs/fione/](https://hub.docker.com/r/codelibs/fione/).
 
 -   [`snapshot` (*snapshot/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/snapshot/Dockerfile)
--   [`13.6.3`, `13.6`, `13` (*13.6/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/13.6/Dockerfile)
+-   [`13.7.0`, `13.7`, `13` (*13.7/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/13.7/Dockerfile)
+-   [`13.6.3`, `13.6` (*13.6/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/13.6/Dockerfile)
 
 ## Getting Started
 
@@ -28,7 +29,7 @@ See [https://hub.docker.com/r/codelibs/fione/](https://hub.docker.com/r/codelibs
 First of all, start Fione with the following command:
 
 ```console
-$ git clone https://github.com/codelibs/docker-fione.git -b v13.6.3
+$ git clone https://github.com/codelibs/docker-fione.git -b v13.7.0
 $ cd docker-fione/compose
 $ docker-compose up
 ```
