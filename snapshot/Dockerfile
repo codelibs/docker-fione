@@ -7,7 +7,7 @@ ENV PATH /usr/local/bin:$PATH
 ENV LD_LIBRARY_PATH /usr/local/lib:$LD_LIBRARY_PATH
 ENV DEBIAN_FRONTEND noninteractive
 
-ARG FIONE_VERSION=13.8.2-SNAPSHOT
+ARG FIONE_VERSION=13.8.1-SNAPSHOT
 
 COPY --from=python /usr/local /usr/local
 
