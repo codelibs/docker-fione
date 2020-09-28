@@ -1,4 +1,4 @@
-FROM codelibs/python:3.8.4-bionic as python
+FROM ghcr.io/codelibs/python:3.8.6-bionic as python
 
 FROM codelibs/fess:snapshot
 
