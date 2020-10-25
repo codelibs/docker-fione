@@ -9,8 +9,6 @@ Fione is provided under Apache license.
 
 ## Docker Images
 
-See [https://hub.docker.com/r/codelibs/fione/](https://hub.docker.com/r/codelibs/fione/).
-
 -   [`snapshot` (*snapshot/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/snapshot/Dockerfile)
 -   [`13.8.0`, `13.8`, `13` (*13.8/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/13.8/Dockerfile)
 -   [`13.7.0`, `13.7` (*13.7/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/13.7/Dockerfile)
@@ -74,7 +72,7 @@ $ docker volume rm compose_es-data compose_es-dict compose_fess-data compose_min
 To build docker images, run as below:
 
 ```console
-$ docker build --rm -t codelibs/fione:<tag name> ./<version_dir>/
+$ docker build --rm -t ghcr.io/codelibs/fione:<tag name> ./<version_dir>/
 ```
 
 ## License
