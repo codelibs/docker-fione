@@ -10,7 +10,8 @@ Fione is provided under Apache license.
 ## Docker Images
 
 -   [`snapshot` (*snapshot/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/snapshot/Dockerfile)
--   [`13.8.0`, `13.8`, `13` (*13.8/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/13.8/Dockerfile)
+-   [`13.9.0`, `13.9`, `13` (*13.8/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/13.9/Dockerfile)
+-   [`13.8.0`, `13.8` (*13.8/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/13.8/Dockerfile)
 -   [`13.7.0`, `13.7` (*13.7/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/13.7/Dockerfile)
 -   [`13.6.3`, `13.6` (*13.6/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/13.6/Dockerfile)
 
@@ -28,7 +29,7 @@ Fione is provided under Apache license.
 First of all, start Fione with the following command:
 
 ```console
-$ git clone https://github.com/codelibs/docker-fione.git -b v13.8.0
+$ git clone https://github.com/codelibs/docker-fione.git -b v13.9.0
 $ cd docker-fione/compose
 $ docker-compose up
 ```
