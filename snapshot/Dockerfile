@@ -1,6 +1,6 @@
 FROM ghcr.io/codelibs/python:3.8.6-bionic as python
 
-FROM ghcr.io/codelibs/fess:snapshot
+FROM ghcr.io/codelibs/fess:13.10.1
 
 ENV LANG en_US.UTF-8
 ENV PATH /usr/local/bin:$PATH
