@@ -1,5 +1,13 @@
 FROM ghcr.io/codelibs/python:3.9.12-focal as python
 
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      build-essential && \
+    rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt /tmp/requirements.txt
+
+RUN pip install --no-cache-dir --upgrade -r /tmp/requirements.txt
+
 FROM ghcr.io/codelibs/fess:14.1.0
 
 ENV LANG en_US.UTF-8
@@ -10,16 +18,6 @@ ENV DEBIAN_FRONTEND noninteractive
 ARG FIONE_VERSION=14.1.0-SNAPSHOT
 
 COPY --from=python /usr/local /usr/local
-
-RUN apt-get update && apt-get install -y --no-install-recommends \
-                libbluetooth-dev \
-                tk-dev \
-                uuid-dev \
-        && rm -rf /var/lib/apt/lists/*
-
-COPY requirements.txt /tmp/requirements.txt
-
-RUN pip install --no-cache-dir --upgrade -r /tmp/requirements.txt
 
 ARG CACHEBUST=1
 RUN set -x && \
