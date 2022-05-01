@@ -1,55 +1,57 @@
-version: "3"
 services:
   fess01:
-    image: ghcr.io/codelibs/fione:13.10.0
+    image: ghcr.io/codelibs/fione:snapshot
     container_name: fess01
-    restart: always
-    ports:
-      - "8080:8080"
-    depends_on:
-      - es01
-      - h2o01
     environment:
-      - RUN_ELASTICSEARCH=false
       - "ES_HTTP_URL=http://es01:9200"
+      - "FESS_DICTIONARY_PATH=${FESS_DICTIONARY_PATH:-/usr/share/elasticsearch/config/dictionary/}"
       - "FESS_DICTIONARY_PATH=/usr/share/elasticsearch/config/dictionary/"
       - "FESS_JAVA_OPTS=-Dfess.system.storage.accesskey=AKIAIOSFODNN7EXAMPLE -Dfess.system.storage.secretkey=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY -Dfess.system.storage.endpoint=http://minio01:9000 -Dfess.system.storage.bucket=fess -Dfess.system.h2o.endpoint=http://h2o01:54321 -Dfess.system.fione.python.path=/usr/local/bin/python3 -Dfess.config.app.extension.names=fione"
+    ports:
+      - "8080:8080"
     networks:
       - fione-net
-    volumes:
-      - ./data/fess01/opt/fess:/opt/fess
-#      - ./data/fess01/var/lib/fess:/var/lib/fess
-      - fess-data:/var/lib/fess
-#      - ./data/fess01/var/log/fess:/var/log/fess
+    depends_on:
+      - es01
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
+    restart: always
 
   es01:
-    image: ghcr.io/codelibs/fess-elasticsearch:7.10.0
+    image: ghcr.io/codelibs/fess-opensearch:1.2.3
     container_name: es01
-    restart: always
-    ports:
-      - 9200:9200
     environment:
       - node.name=es01
       - discovery.seed_hosts=es01
       - cluster.initial_master_nodes=es01
       - cluster.name=fess-es
       - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xmx1g"
-      - "FESS_DICTIONARY_PATH=/usr/share/elasticsearch/config/dictionary"
+      - plugins.security.disabled=true
+      - "OPENSEARCH_JAVA_OPTS=-Xms1g -Xmx1g -Dlog4j2.formatMsgNoLookups=true"
+      - "FESS_DICTIONARY_PATH=/usr/share/opensearch/config/dictionary"
     ulimits:
-      nofile:
-        soft: 65536
-        hard: 65536
       memlock:
         soft: -1
         hard: -1
+      nofile:
+        soft: 65535
+        hard: 65535
+    volumes:
+      - esdata01:/usr/share/opensearch/data
+      - esdictionary01:/usr/share/opensearch/config/dictionary
+    ports:
+      - 9200:9200
     networks:
       - fione-net
-    volumes:
-#      - ./data/es01/usr/share/elasticsearch/data:/usr/share/elasticsearch/data
-      - es-data:/usr/share/elasticsearch/data
-#      - ./data/es01/usr/share/elasticsearch/config/dictionary:/usr/share/elasticsearch/config/dictionary
-      - es-dict:/usr/share/elasticsearch/config/dictionary
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
+    restart: always
 
   minio01:
     image: minio/minio
@@ -61,22 +63,23 @@ services:
       - "MINIO_ACCESS_KEY=AKIAIOSFODNN7EXAMPLE"
       - "MINIO_SECRET_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
     volumes:
-#      - ./data/minio01/data:/data
       - minio-data:/data
+#      - ./data/minio01/data:/data
     networks:
       - fione-net
     command: server /data
+    restart: always
 
   h2o01:
-    image: ghcr.io/codelibs/h2o:3.32.0.2
+    image: ghcr.io/codelibs/h2o:3.36.1.1
     container_name: h2o01
     restart: always
     ports:
       - "54321:54321"
     environment:
+#      - "H2O_MAX_HEAP=2g"
       - "H2O_JVM_OPTIONS=-Dsys.ai.h2o.persist.s3.endPoint=http://minio01:9000 -Dsys.ai.h2o.persist.s3.enable.path.style=true -Dsys.ai.h2o.persist.s3.region=us-east-1 -Dsys.ai.h2o.automl.algo_parameters.all.enabled=true -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/data -XX:ErrorFile=/data/hs_err_pid%p.log"
       - "H2O_OPTIONS=-log_level INFO -hdfs_config /data/core-site.xml"
-#      - "H2O_MAX_HEAP=2g"
       - "AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE"
       - "AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
     networks:
@@ -85,11 +88,9 @@ services:
       - ./data/h2o01/data:/data
 
 volumes:
-  fess-data:
+  esdata01:
     driver: local
-  es-data:
-    driver: local
-  es-dict:
+  esdictionary01:
     driver: local
   minio-data:
     driver: local

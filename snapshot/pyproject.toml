@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "fione"
+version = "14.1.0"
+description = "Enterprise AI Platform"
+authors = ["CodeLibs, Inc. <info@codelibs.co>"]
+
+[tool.poetry.dependencies]
+python = "3.9.*"
+Cython = "^0.29.28"
+requests = "^2.27.1"
+tabulate = "^0.8.9"
+colorama = "^0.4.4"
+future = "^0.18.2"
+grip = "^4.6.1"
+numpy = "^1.22.3"
+scipy = "^1.8.0"
+pandas = "^1.4.2"
+gensim = "^4.1.2"
+Pillow = "^9.1.0"
+nltk = "^3.7"
+beautifulsoup4 = "^4.11.1"
+ipython = "^8.3.0"
+jupyter = "^1.0.0"
+scikit-learn = "^1.0.2"
+h2o = "^3.36.1"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
