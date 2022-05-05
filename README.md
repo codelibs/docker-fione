@@ -7,16 +7,6 @@ Docker for Fione
 You can install and run Fione quickly on any platforms, which have Docker runtime environment.
 Fione is provided under Apache license.
 
-## Docker Images
-
--   [`snapshot` (*snapshot/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/snapshot/Dockerfile)
--   [`14.1.0` (*14.1/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/14.1/Dockerfile)
--   [`13.10.0`, `13.10`, `13` (*13.10/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/13.10/Dockerfile)
--   [`13.9.0`, `13.9` (*13.9/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/13.9/Dockerfile)
--   [`13.8.0`, `13.8` (*13.8/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/13.8/Dockerfile)
--   [`13.7.0`, `13.7` (*13.7/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/13.7/Dockerfile)
--   [`13.6.3`, `13.6` (*13.6/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/13.6/Dockerfile)
-
 ## Getting Started
 
 (For more details, see [Quick Start](https://fione.codelibs.org/docs/getting-started/quickstart))
@@ -24,7 +14,6 @@ Fione is provided under Apache license.
 ### Prerequisite
 
 - [Docker](https://www.docker.com/get-started)
-- [Docker Compose](https://docs.docker.com/compose/)
 
 ### Start Fione
 
@@ -67,6 +56,16 @@ Some data remains in docker volumes. To delete them, run the following command:
 ```console
 $ docker volume rm compose_es-data compose_es-dict compose_fess-data compose_minio-data
 ```
+
+## Docker Images
+
+-   [`snapshot` (*snapshot/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/snapshot/Dockerfile)
+-   [`14.1.0` (*14.1/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/14.1/Dockerfile)
+-   [`13.10.0`, `13.10`, `13` (*13.10/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/13.10/Dockerfile)
+-   [`13.9.0`, `13.9` (*13.9/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/13.9/Dockerfile)
+-   [`13.8.0`, `13.8` (*13.8/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/13.8/Dockerfile)
+-   [`13.7.0`, `13.7` (*13.7/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/13.7/Dockerfile)
+-   [`13.6.3`, `13.6` (*13.6/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/13.6/Dockerfile)
 
 ## Development
 
