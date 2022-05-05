@@ -10,6 +10,7 @@ Fione is provided under Apache license.
 ## Docker Images
 
 -   [`snapshot` (*snapshot/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/snapshot/Dockerfile)
+-   [`14.1.0` (*14.1/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/14.1/Dockerfile)
 -   [`13.10.0`, `13.10`, `13` (*13.10/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/13.10/Dockerfile)
 -   [`13.9.0`, `13.9` (*13.9/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/13.9/Dockerfile)
 -   [`13.8.0`, `13.8` (*13.8/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/13.8/Dockerfile)
@@ -30,14 +31,14 @@ Fione is provided under Apache license.
 First of all, start Fione with the following command:
 
 ```console
-$ git clone https://github.com/codelibs/docker-fione.git -b v13.10.0
+$ git clone https://github.com/codelibs/docker-fione.git -b v14.1.0
 $ cd docker-fione/compose
-$ docker-compose up
+$ docker compose up
 ```
 
 ### Create Project
 
-1. Access `http://localhost:8080/admin/easyml/` and login as `fione` user (password is `fione`).
+1. Access `http://localhost:8080/admin/easyml/` and login as `admin` user (password is `admin`).
 1. Type `Project Name` and `Training Data`. (for example, you can download [train.csv](https://www.kaggle.com/c/titanic/data) for Titanic)
 1. Click `Create` button.
 
@@ -58,7 +59,7 @@ To download Dockerfile for Serving API, you can find it at Serving page for each
 ### Stop Fione and Clean Up
 
 ```console
-$ docker-compose down
+$ docker compose down
 ```
 
 Some data remains in docker volumes. To delete them, run the following command:
