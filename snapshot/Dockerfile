@@ -8,14 +8,14 @@ COPY requirements.txt /tmp/requirements.txt
 
 RUN pip install --no-cache-dir --upgrade -r /tmp/requirements.txt
 
-FROM ghcr.io/codelibs/fess:14.1.0
+FROM ghcr.io/codelibs/fess:14.5.0
 
 ENV LANG en_US.UTF-8
 ENV PATH /usr/local/bin:$PATH
 ENV LD_LIBRARY_PATH /usr/local/lib:$LD_LIBRARY_PATH
 ENV DEBIAN_FRONTEND noninteractive
 
-ARG FIONE_VERSION=14.1.0-SNAPSHOT
+ARG FIONE_VERSION=14.5.0-SNAPSHOT
 
 COPY --from=python /usr/local /usr/local
 
