@@ -1,4 +1,4 @@
-FROM ghcr.io/codelibs/python:3.9.12-focal as python
+FROM ghcr.io/codelibs/python:3.10.9-focal as python
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
       build-essential && \

@@ -1,11 +1,11 @@
 [tool.poetry]
 name = "fione"
-version = "14.1.0"
+version = "14.5.0"
 description = "Enterprise AI Platform"
 authors = ["CodeLibs, Inc. <info@codelibs.co>"]
 
 [tool.poetry.dependencies]
-python = "3.9.*"
+python = "3.10.*"
 Cython = "^0.29.28"
 requests = "^2.27.1"
 tabulate = "^0.8.9"
