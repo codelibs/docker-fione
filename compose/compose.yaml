@@ -1,9 +1,9 @@
 services:
-  fess01:
-    image: ghcr.io/codelibs/fione:14.1.0
-    container_name: fess01
+  fione01:
+    image: ghcr.io/codelibs/fione:14.6.0
+    container_name: fione01
     environment:
-      - "ES_HTTP_URL=http://es01:9200"
+      - "SEARCH_ENGINE_HTTP_URL=http://search01:9200"
       - "FESS_DICTIONARY_PATH=${FESS_DICTIONARY_PATH:-/usr/share/opensearch/config/dictionary/}"
       - "FESS_JAVA_OPTS=-Dfess.system.storage.accesskey=AKIAIOSFODNN7EXAMPLE -Dfess.system.storage.secretkey=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY -Dfess.system.storage.endpoint=http://minio01:9000 -Dfess.system.storage.bucket=fess -Dfess.system.h2o.endpoint=http://h2o01:54321 -Dfess.system.fione.python.path=/usr/local/bin/python3 -Dfess.config.app.extension.names=fione"
     ports:
@@ -11,7 +11,7 @@ services:
     networks:
       - fione-net
     depends_on:
-      - es01
+      - search01
     logging:
       driver: "json-file"
       options:
@@ -19,17 +19,17 @@ services:
         max-file: "5"
     restart: always
 
-  es01:
-    image: ghcr.io/codelibs/fess-opensearch:1.2.3
-    container_name: es01
+  search01:
+    image: ghcr.io/codelibs/fess-opensearch:2.4.1
+    container_name: search01
     environment:
-      - node.name=es01
-      - discovery.seed_hosts=es01
-      - cluster.initial_master_nodes=es01
+      - node.name=search01
+      - discovery.seed_hosts=search01
+      - cluster.initial_cluster_manager_nodes=search01
       - cluster.name=fess-es
       - bootstrap.memory_lock=true
       - plugins.security.disabled=true
-      - "OPENSEARCH_JAVA_OPTS=-Xms1g -Xmx1g -Dlog4j2.formatMsgNoLookups=true"
+      - "OPENSEARCH_JAVA_OPTS=-Xms1g -Xmx1g"
       - "FESS_DICTIONARY_PATH=/usr/share/opensearch/config/dictionary"
     ulimits:
       memlock:
@@ -39,8 +39,8 @@ services:
         soft: 65535
         hard: 65535
     volumes:
-      - esdata01:/usr/share/opensearch/data
-      - esdictionary01:/usr/share/opensearch/config/dictionary
+      - searchdata01:/usr/share/opensearch/data
+      - searchdictionary01:/usr/share/opensearch/config/dictionary
     ports:
       - 9200:9200
     networks:
@@ -70,7 +70,7 @@ services:
     restart: always
 
   h2o01:
-    image: ghcr.io/codelibs/h2o:3.36.1.1
+    image: ghcr.io/codelibs/h2o:3.38.0.4
     container_name: h2o01
     restart: always
     ports:
@@ -87,9 +87,9 @@ services:
       - ./data/h2o01/data:/data
 
 volumes:
-  esdata01:
+  searchdata01:
     driver: local
-  esdictionary01:
+  searchdictionary01:
     driver: local
   minio-data:
     driver: local
