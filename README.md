@@ -60,7 +60,9 @@ $ docker volume rm compose_es-data compose_es-dict compose_fess-data compose_min
 ## Docker Images
 
 -   [`snapshot` (*snapshot/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/snapshot/Dockerfile)
--   [`14.1.0` (*14.1/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/14.1/Dockerfile)
+-   [`15.3.2`, `15.3`, `15`, `latest` (*15.3/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/15.3/Dockerfile)
+-   [`14.6.0`, `14.6`, `14` (*14.6/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/14.6/Dockerfile)
+-   [`14.1.0`, `14.1` (*14.1/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/14.1/Dockerfile)
 -   [`13.10.0`, `13.10`, `13` (*13.10/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/13.10/Dockerfile)
 -   [`13.9.0`, `13.9` (*13.9/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/13.9/Dockerfile)
 -   [`13.8.0`, `13.8` (*13.8/Dockerfile*)](https://github.com/codelibs/docker-fione/blob/master/13.8/Dockerfile)
